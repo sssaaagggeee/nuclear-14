@@ -1,0 +1,41 @@
+- type: entity
+  parent: N14ClothingOuterPowerArmorT45NCRSalvaged
+  id: N14ClothingOuterPowerArmorT45salvaged
+  name: t-45 salvaged power armor
+  description: Originally existing as T-45d power armor, it has been butchered by someone with the removal of the power pack and servo-motor assembly and jury-rigged as a standard armor. Lacks the training a complete suit demands for less than decent protection. Why would you even wear such a thing?
+  components:
+  - type: PowerArmorIntegrity
+    brokenBleedthroughRatio: 1.0  # #Misfits Add - when broken, only armor coefficients apply
+    maxIntegrity: 325 # #Misfits Tweak: +150 flat integrity buff
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/t45d.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/t45d.rsi
+  - type: Armor # #Misfits Tweak: Added Heat and Piercing coefficients — pre-reduces damage before integrity absorption so PA stays above Centurion/Vet.Ranger at all integrity levels.
+    modifiers:
+      coefficients:
+        Blunt: 0.65
+        Slash: 0.65
+        Piercing: 0.65
+        Heat: 0.65
+        Caustic: 0.55
+        Radiation: 0.55
+  - type: TemperatureProtection
+    coefficient: 0.55
+  - type: ExplosionResistance
+    damageCoefficient: 0.20 # #Misfits Tweak: NCR salvaged PA — weakest blast protection after raider, ~24 HP at ground zero
+  - type: UserInterface
+    interfaces:
+      enum.ToggleClothingUiKey.Key:
+        type: ToggleableClothingBoundUserInterface
+  - type: ToggleableClothing
+    clothingPrototypes:
+      head: N14ClothingHeadHelmetPowerArmorT45
+      gloves: N14ClothingPAGauntlets
+      shoes: N14ClothingPABoots
+  - type: Reflect # #Misfits Change Tweak: Salvaged NCR T-45 ricochets small-caliber rounds at 30% (innate).
+    reflects:
+      - SmallCaliber
+    reflectProb: 0.4
+    innate: true
+    spread: 90
